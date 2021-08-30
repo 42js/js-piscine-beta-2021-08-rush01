@@ -7,7 +7,7 @@ const authService = require("./auth.js");
 const app = express();
 app.use(express.json());
 
-router.post("/api/v1/auth/google", (req, res) => {
+router.post(process.env.ENDPOINT_AUTH, (req, res) => {
 	authService.GoogleLogin(req, res);
 })
 

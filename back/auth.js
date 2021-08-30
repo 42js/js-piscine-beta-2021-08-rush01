@@ -21,18 +21,18 @@ const GoogleLogin = async (req, res) => {
 	res.json(user);
 }
 
-server.use(async (req, res, next) => {
-	const user = await db.user.findFirst({where: { id : req.session.userId }})
-	req.user = user;
-	next()
-})
+// app.use(async (req, res, next) => {
+// 	const user = await db.user.findFirst({where: { id : req.session.userId }})
+// 	req.user = user;
+// 	next()
+// })
 
- server.delete("", async (req, res) => {
-	await req.session.destory()
-	res.status(200)
-	res.json({
-		message: "Logged out successfully"
-	})
- })
+// app.delete("", async (req, res) => {
+// 	await req.session.destory()
+// 	res.status(200)
+// 	res.json({
+// 		message: "Logged out successfully"
+// 	})
+// })
 
  module.exports = { GoogleLogin };
