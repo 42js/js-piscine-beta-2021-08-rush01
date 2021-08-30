@@ -1,5 +1,3 @@
-import Player from './player';
-
 (function init() {
   const P1 = 'X';
   const P2 = 'O';
@@ -8,6 +6,48 @@ import Player from './player';
 
   // const socket = io.connect('http://tic-tac-toe-realtime.herokuapp.com'),
   const socket = io.connect('http://localhost:5000');
+
+  class Player {
+    constructor(name, type) {
+      this.name = name;
+      this.type = type;
+      this.currentTurn = true;
+      this.playsArr = 0;
+    }
+
+    static get wins() {
+      return [7, 56, 448, 73, 146, 292, 273, 84];
+    }
+
+    // Set the bit of the move played by the player
+    // tileValue - Bitmask used to set the recently played move.
+    updatePlaysArr(tileValue) {
+      this.playsArr += tileValue;
+    }
+
+    getPlaysArr() {
+      return this.playsArr;
+    }
+
+    // Set the currentTurn for player to turn and update UI to reflect the same.
+    setCurrentTurn(turn) {
+      this.currentTurn = turn;
+      const message = turn ? 'Your turn' : 'Waiting for Opponent';
+      $('#turn').text(message);
+    }
+
+    getPlayerName() {
+      return this.name;
+    }
+
+    getPlayerType() {
+      return this.type;
+    }
+
+    getCurrentTurn() {
+      return this.currentTurn;
+    }
+  }
 
   // roomId Id of the room in which the game is running on the server.
   class Game {
@@ -49,7 +89,6 @@ import Player from './player';
         }
       }
     }
-
     // Remove the menu from DOM, display the gameboard and greet the player.
     displayBoard(message) {
       $('.menu').css('display', 'none');
@@ -57,7 +96,6 @@ import Player from './player';
       $('#userHello').html(message);
       this.createGameBoard();
     }
-
     /**
      * Update game board UI
      *
@@ -86,7 +124,6 @@ import Player from './player';
         room: this.getRoomId(),
       });
     }
-
     /**
      *
      * To determine a win condition, each square is "tagged" from left
@@ -134,7 +171,7 @@ import Player from './player';
       return this.moves >= 9;
     }
 
-    // Announce the winner if the current client has won.
+    // Announce the winner if the current client has won. 
     // Broadcast this on the room to let the opponent know.
     announceWinner() {
       const message = `${player.getPlayerName()} wins!`;
@@ -178,7 +215,8 @@ import Player from './player';
 
   // New Game created by current client. Update the UI and create new Game var.
   socket.on('newGame', (data) => {
-    const message = `Hello, ${data.name}. Please ask your friend to enter Game ID:
+    const message =
+      `Hello, ${data.name}. Please ask your friend to enter Game ID: 
       ${data.room}. Waiting for player 2...`;
 
     // Create game for player 1
@@ -197,8 +235,8 @@ import Player from './player';
   });
 
   /**
-	 * Joined the game, so player is P2(O).
-	 * This event is received when P2 successfully joins the game room.
+	 * Joined the game, so player is P2(O). 
+	 * This event is received when P2 successfully joins the game room. 
 	 */
   socket.on('player2', (data) => {
     const message = `Hello, ${data.name}`;
@@ -211,7 +249,7 @@ import Player from './player';
 
   /**
 	 * Opponent played his turn. Update UI.
-	 * Allow the current player to play now.
+	 * Allow the current player to play now. 
 	 */
   socket.on('turnPlayed', (data) => {
     const row = data.tile.split('_')[1][0];
@@ -229,7 +267,7 @@ import Player from './player';
   });
 
   /**
-	 * End the game on any err event.
+	 * End the game on any err event. 
 	 */
   socket.on('err', (data) => {
     game.endGame(data.message);

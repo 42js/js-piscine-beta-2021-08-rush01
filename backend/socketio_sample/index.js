@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
   // Create a new game room and notify the creator of game.
   socket.on('createGame', (data) => {
-    socket.join(`room-${rooms += 1}`);
+    socket.join(`room-${++rooms}`);
     socket.emit('newGame', { name: data.name, room: `room-${rooms}` });
   });
 
