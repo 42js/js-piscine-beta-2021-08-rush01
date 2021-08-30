@@ -28,6 +28,12 @@
       2,
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
     ],
+    "import/extensions": [
+      "error",
+      {
+        "js": "ignorePackages"
+      }
+    ],
     "max-len": ["error", { "code": 80, "ignoreUrls": true }]
   },
   "settings": {
