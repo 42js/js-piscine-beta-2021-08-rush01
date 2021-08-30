@@ -46,8 +46,10 @@ class Game {
       this.lastWinner = '';
       console.log('Draw Game');
     } else {
+      if (winner === this.playerOne) this.playerOne.addToken(this.potOnTable);
+      else this.playerTwo.addToken(this.potOnTable);
+
       this.lastWinner = winner;
-      this.lastWinner.addToken(this.potOnTable);
       this.potOnTable = 0;
       console.log(`Winner is ${this.lastWinner.name}`);
       console.log(
@@ -103,8 +105,11 @@ class Game {
   }
 
   raiseBet(player, token) {
-    player.subtractToken(token);
+    console.log(player.name);
+    if (player === this.playerOne) this.playerOne.subtractToken(token);
+    else this.playerTwo.subtractToken(token);
     this.potOnTable += token;
+    console.log(`~~~~~Player ${player.name} bet ${token} tokens~~~~~`);
   }
 }
 
