@@ -6,7 +6,7 @@ function getCompareValue(cardValue) {
 }
 
 class Game {
-  constructor(pOne, pTwo) {
+  constructor(pOne, pTwo, time) {
     this.deck = Array.from({ length: 40 }, (v, i) => i + 1);
     this.playerOne = pOne;
     this.playerTwo = pTwo;
@@ -14,6 +14,7 @@ class Game {
     this.potOnTable = 0;
     this.currentTurn = '';
     this.wasDrawGame = false;
+    this.turnTime = time;
   }
 
   // todo: initGame 만들기
