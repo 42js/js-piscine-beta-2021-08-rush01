@@ -25,6 +25,7 @@ gameTest.initGame();
 console.log(gameTest.playerOne.getCardOnHand());
 console.log(gameTest.playerTwo.getCardOnHand());
 console.log(gameTest.deck);
+
 // raiseBet 테스트용
 if (gameTest.lastWinner === gameTest.playerOne) {
   gameTest.raiseBet(gameTest.playerOne, 10);
