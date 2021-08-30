@@ -28,9 +28,6 @@ const LoginForm = styled.form`
   }
 `;
 
-// const LoginFormImg = styled.form`
-// `;
-
 function LoginPage({ history }) {
   const onLoginHandler = (e) => {
     e.preventDefault(); // for no refresh
