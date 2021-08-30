@@ -1,0 +1,14 @@
+.container{
+    align-content: 'center';
+    width: 100vw;
+    height: 80vh;
+}
+.box{
+    font-weight: bolder;
+    font-size: xx-large;
+    color: rgba(175, 126, 80, 0.726);
+    margin-top: 15%;
+}
+.button{
+    width: 30%;    
+}

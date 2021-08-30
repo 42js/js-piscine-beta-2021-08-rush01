@@ -1,0 +1,9 @@
+.button{
+    font-weight: bolder;
+    text-align: center;
+}
+.fullgrid{
+    width: 80%;
+    height: 90%;
+    margin: 1%;
+}
