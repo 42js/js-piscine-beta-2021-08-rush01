@@ -3,6 +3,7 @@ import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import LoginPage from "../src/pages/LoginPage";
 import JoinPage from "../src/pages/JoinPage";
+import MainPage from "../src/pages/MainPage";
 
 const GlobalStyle = createGlobalStyle`
   html, body, ul, li, input, button, a {
@@ -71,6 +72,7 @@ function App() {
       <BrowserRouter>
         <Route path="/" exact component={LoginPage} />
         <Route path="/join" component={JoinPage} />
+        <Route path="/main" component={MainPage} />
       </BrowserRouter>
       <GlobalStyle />
     </div>

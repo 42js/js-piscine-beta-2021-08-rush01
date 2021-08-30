@@ -6,29 +6,50 @@ const MainPageStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
 
   button {
-    width: 100px;
+    width: 180px;
     text-align: center;
-    border: 1px solid #343a3f;
+    border: 1.5px solid #ddd;
     border-radius: 20px;
-    padding: 9px 10px;
-    font-weight: 600;
+    padding: 11px 0;
+    font-weight: bold;
     margin-top: 35px;
     :hover {
-      background-color: #343a3f;
-      color: #fff;
+      background-color: #ddd;
+      color: black;
     }
   }
 `;
 
 const UserProfile = styled.div``;
 
+const Profile = styled.div`
+  display: flex;
+  img {
+    top: 60px;
+    left: 5px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+`;
+
+const Nickname = styled.div`
+  display: flex;
+`;
+
 function MainPage() {
+  const [imgPreview, setImgPreview] = useState(defaultImg);
+
   return (
     <MainPageStyled>
-      <UserProfile>닉네임</UserProfile>
+      <UserProfile>
+        <Profile>
+          <img src={imgPreview} alt="profile" />
+          <Nickname> 환영합니다 </Nickname>
+        </Profile>
+      </UserProfile>
       <button type="button">방 참가</button>
       <button type="button">방 생성</button>
     </MainPageStyled>
