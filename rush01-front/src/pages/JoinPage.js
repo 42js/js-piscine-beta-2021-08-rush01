@@ -6,19 +6,18 @@ const JoinPageStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
 
   button {
-    width: 100px;
+    width: 180px;
     text-align: center;
-    border: 1px solid #343a3f;
+    border: 1.5px solid #ddd;
     border-radius: 20px;
-    padding: 9px 10px;
-    font-weight: 600;
+    padding: 11px 0;
+    font-weight: bold;
     margin-top: 35px;
     :hover {
-      background-color: #343a3f;
-      color: #fff;
+      background-color: #ddd;
+      color: black;
     }
   }
 `;
@@ -27,7 +26,7 @@ const JoinForm = styled.form`
   width: 50vw;
   min-width: 400px;
   max-width: 600px;
-  margin-top: 100px;
+  margin-top: 70px;
 `;
 
 JoinForm.Item = styled.div`
@@ -36,7 +35,7 @@ JoinForm.Item = styled.div`
   input {
     width: 100%;
     height: 35px;
-    border: 1px solid #ddd;
+    border: 1px solid #888;
     padding-left: 10px;
     box-sizing: border-box;
     border-radius: 5px;
@@ -62,7 +61,7 @@ JoinForm.Item.Field = styled.div`
   .file_button {
     margin-left: 10px;
     display: inline-block;
-    border: 1px solid #ccc;
+    border: 1px solid #ddd;
     width: 100px;
     height: 35px;
     box-sizing: border-box;
@@ -74,7 +73,7 @@ JoinForm.Item.Field = styled.div`
 `;
 
 JoinForm.Preview = styled.div`
-  border: 1px dashed #ddd;
+  border: 1px dashed #aaa;
   border-radius: 5px;
   padding: 30px;
   margin: 0 300px 20px 0;

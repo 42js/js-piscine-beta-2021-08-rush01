@@ -6,7 +6,6 @@ const LoginPageStyled = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  height: 100%;
 `;
 
 const LoginForm = styled.form`
@@ -14,17 +13,19 @@ const LoginForm = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top : -300px;
   button {
     width: 300px;
+    margin-top: 150px;
     text-align: center;
-    border: 2px solid #343a3f;
+    border: 2px solid #ddd;
     border-radius: 20px;
     padding: 10px 50px;
+    font-size: 25px;
+    letter-spacing: 0.09em;
     font-weight: 600;
     :hover {
-      background-color: #343a3f;
-      color: #fff;
+      background-color: #ddd;
+      color: #343a3f;
   }
 `;
 
