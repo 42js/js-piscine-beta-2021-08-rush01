@@ -1,0 +1,75 @@
+.gameGround {
+    position: relative;
+    height: 571.38px;
+    background-image: url("../../Image/Battle/opponent_state.jpeg"),
+    url("../../Image/Battle/character.jpeg"),
+    url("../../Image/Battle/betting_state.jpeg"),
+    url("../../Image/Battle/message_box.jpeg");
+    background-repeat: no-repeat;
+    
+    background-size: 323px 75px, 228px 176px, 327px 63px, 617px 141px;
+    background-position: 23% 16%, 18% 55%, 90% 63%, 50% 97%;
+    z-index: 0;
+}
+
+.LeaveRoom {
+    position: absolute;
+    font-family: "ZCOOL KuaiLe", cursive;
+    font-size: 30px;
+    color: red;
+    left: 3%;
+    top: 2%;
+}
+
+
+.BettingSetting {
+    position: absolute;
+    width: 100%;
+    top: 78%
+}
+
+.BettingCount {
+    font-family: "ZCOOL KuaiLe", cursive;
+    font-size: 30px;
+    color: black;
+}
+
+.UserName {
+    position: absolute;
+    font-family: "ZCOOL KuaiLe", cursive;
+    font-size: 30px;
+    color: black;
+    top: 13%;
+    left: 21%;
+}
+
+.LeftCoin {
+    position: absolute;
+    font-family: "ZCOOL KuaiLe", cursive;
+    font-size: 30px;
+    color: black;
+    top: 56%;
+    left: 73%;
+}
+
+.Card {
+    position: absolute;
+    top: 3%;
+    left: 67%;
+}
+
+.Clock {
+    position: absolute;
+    font-family: "ZCOOL KuaiLe", cursive;
+    font-size: 35px;
+    color: black;
+    top: 3%;
+    width: 100%;
+}
+
+.ControlButton {
+    position: absolute;
+    top: 80%;
+    left: 14%;
+    width: 100%;
+}
