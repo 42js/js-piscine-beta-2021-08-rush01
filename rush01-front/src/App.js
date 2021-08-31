@@ -40,8 +40,6 @@ function App() {
       })
       .catch((err) => console.warn(err));
   };
-
-  console.log(cookies.get("connect.sid"));
   return (
     <div className="App">
       <Header>
@@ -49,7 +47,7 @@ function App() {
       </Header>
       <BrowserRouter>
         <Route path="/" exact>
-          {document.cookie ? (
+          {cookies.get("connect.sid") ? (
             <MainPage nickname={nickname} img={imgPreview} />
           ) : (
             <LoginPage />
