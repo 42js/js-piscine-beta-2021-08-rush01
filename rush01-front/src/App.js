@@ -22,20 +22,19 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body { 
+    background: #000;
+    
    /*
     background: #0f0c29;
     background: -webkit-linear-gradient(to left, #24243e, #302b63, #0f0c29);
     background: linear-gradient(to left, #24243e, #302b63, #0f0c29);
     */
-<<<<<<< HEAD
 
-=======
-   
     /*
->>>>>>> 773319b11bce875fe0458b7fb29fafb1fec8cc1c
     background: #0F2027;
     background: -webkit-linear-gradient(to bottom, #2C5364, #203A43, #0F2027);
     background: linear-gradient(to bottom, #2C5364, #203A43, #0F2027);
+    */
   }
   
   header {
