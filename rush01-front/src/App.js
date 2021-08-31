@@ -17,13 +17,17 @@ function App() {
       .catch((err) => console.log(err));
   };
   const handleJoinButtonClick = async (nickname, imgFile) => {
+    const headers = {
+      processData: false,
+    };
     const formData = new FormData();
-    formData.append("file", imgFile);
+    formData.append("nickname", nickname);
+    formData.append("photo", imgFile);
+    for (var value of formData.values()) {
+      console.log(value);
+    }
     await axios
-      .post("/api/join", {
-        nickname: nickname,
-        photo: formData,
-      })
+      .post("/api/join", formData, { headers: headers })
       .then((res) => console.log(res))
       .catch((err) => console.warn(err));
   };

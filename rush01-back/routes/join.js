@@ -6,16 +6,16 @@ var passport = require('../passportset');
 const multer = require('multer');
 router.use(passport.initialize());
 router.use(passport.session());
-const storage = multer.diskStorage({
-    destination: "./public/img/",
-    filename: function(req, file, cb) {
-      cb(null, "imgfile" + Date.now());
-    }
-  });
-  const upload = multer({
-    storage: storage,
-    limits: { fileSize: 1000000 }
-  });
+// const storage = multer.diskStorage({
+//     destination: "./public/img/",
+//     filename: function(req, file, cb) {
+//       cb(null, "imgfile" + Date.now());
+//     }
+//   });
+//   const upload = multer({
+//     storage: storage,
+//     limits: { fileSize: 10000000000 }
+//   });
 router.get('/',
   ensureLoggedIn('/api/login/42'),
   function (req, res) {
@@ -25,12 +25,17 @@ router.get('/',
     //res.render('index', {name : req.user.username});
   });
 router.post('/',
-  ensureLoggedIn('/api/login/42'),upload.single("file"),
+  ensureLoggedIn('/api/login/42'),//upload.single("file"),
   function (req, res) {
-      console.log(req.file.profile)
-    Users.update({nickname:req.body.nickname,photo:req.body.photo},{ where: { username: req.user.username } }).then((results) => {
-          res.redirect('/')
-    }).catch((err) => { console.log('' + err); });
+    try{
+      var buf = new Buffer(req.body.photo.toString('binary'),'binary')
+      console.log(buf)
+    }catch(e){
+      console.log(e);
+    }
+    //Users.update({nickname:req.body.nickname,photo:req.body.photo},{ where: { username: req.user.username } }).then((results) => {
+    //      res.redirect('/')
+    //}).catch((err) => { console.log('' + err.stack); });
     //res.render('index', {name : req.user.username});
   });
 
