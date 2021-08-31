@@ -2,13 +2,35 @@ import React from "react";
 import styled from "styled-components";
 import axios from "axios";
 
-const LoginPageStyled = styled.div`
+function LoginPage({ history }) {
+  const onLoginHandler = async (e) => {
+    e.preventDefault(); // for no refresh
+    await axios
+      .get("/api/login")
+      .then((res) => {
+        console.log(res);
+        history.push("/join");
+      })
+      .catch((err) => console.warn(err));
+  };
+  return (
+    <LoginPageStyled>
+      <LoginForm>
+        <button type="button" onClick={onLoginHandler}>
+          Intra Login
+        </button>
+      </LoginForm>
+    </LoginPageStyled>
+  );
+}
+
+export const LoginPageStyled = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
 `;
 
-const LoginForm = styled.form`
+export const LoginForm = styled.form`
   width: 500px;
   display: flex;
   justify-content: center;
@@ -28,32 +50,5 @@ const LoginForm = styled.form`
       color: #343a3f;
   }
 `;
-
-function LoginPage({ history }) {
-  const onLoginHandler = (e) => {
-    e.preventDefault(); // for no refresh
-    console.log("Login Handler");
-    history.push("/api/login");
-    axios
-      .get("/api/login")
-      .then((response) => {
-        alert("success!");
-        history.push("/join");
-        return response.data;
-      })
-      .catch((error) => {
-        alert("Fail!");
-      });
-  };
-  return (
-    <LoginPageStyled>
-      <LoginForm>
-        <button type="button" onClick={onLoginHandler}>
-          Intra Login
-        </button>
-      </LoginForm>
-    </LoginPageStyled>
-  );
-}
 
 export default LoginPage;
