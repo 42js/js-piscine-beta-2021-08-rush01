@@ -16,9 +16,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Run a multi-line script
-        shell: bash
-        run: |
-            git pull
+  bu3:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
             sudo bash up.sh
 
