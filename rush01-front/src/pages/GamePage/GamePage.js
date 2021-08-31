@@ -1,5 +1,5 @@
 import React from "react";
-import { GamePageStyled, PlayerCards } from "./GamePage.styles";
+import { GamePageStyled, PlayerCards, DealingSection } from "./GamePage.styles";
 
 function GamePage(props) {
   return (
@@ -9,12 +9,20 @@ function GamePage(props) {
           <label> My </label>
           <PlayerCards.Card></PlayerCards.Card>
         </PlayerCards.Box>
-        <div> VS </div>
+        <div className="vs"> VS </div>
         <PlayerCards.Box>
           <label> Yours </label>
           <PlayerCards.Card></PlayerCards.Card>
         </PlayerCards.Box>
       </PlayerCards>
+      <DealingSection>
+        <DealingSection.Item>현재 칩 갯수: </DealingSection.Item>
+        <DealingSection.Item>남은 턴 시간: </DealingSection.Item>
+        <DealingSection.Item>
+          <button type="button">+1</button>
+          <button type="button">-1</button>
+        </DealingSection.Item>
+      </DealingSection>
     </GamePageStyled>
   );
 }
