@@ -17,7 +17,8 @@ const joinRouter = require('./routes/join');
 
 var app = express();
 app.use(cors({
-  origin: '*'
+  origin: true,
+  credentials: true
 }));
 //sequelize.authenticate().then((results) => {
 sequelize.sync().then((results) => {
