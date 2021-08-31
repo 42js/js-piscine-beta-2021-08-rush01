@@ -1,7 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-function LoginPage({ handleClick }) {
+function LoginPage({ history }) {
+  const handleClick = () => {
+    try {
+      history.push("/api/join");
+    } catch (e) {
+      console.warn(e);
+    }
+  };
   return (
     <LoginPageStyled>
       <LoginForm>

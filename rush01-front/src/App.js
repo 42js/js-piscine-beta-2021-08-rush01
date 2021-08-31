@@ -69,14 +69,6 @@ const Header = styled.header`
 `;
 
 function App() {
-  const handleLoginButtonClick = async () => {
-    await axios
-      .get("/api/login")
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => console.log(err));
-  };
   const handleJoinButtonClick = async (nickname, imgFile) => {
     await axios
       .post("/api/join", {
@@ -98,10 +90,7 @@ function App() {
           exact
           render={() => <MainPage nickname={"hannkim"} />}
         />
-        <Route
-          path="/login"
-          render={() => <LoginPage handleClick={handleLoginButtonClick} />}
-        />
+        <Route path="/login" component={LoginPage} />
         <Route
           path="/join"
           render={() => (
