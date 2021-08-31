@@ -19,15 +19,17 @@ function App() {
   const handleJoinButtonClick = async (nickname, imgFile) => {
     const headers = {
       processData: false,
+      "Content-Type": "multipart/form-data",
     };
     const formData = new FormData();
     formData.append("nickname", nickname);
     formData.append("photo", imgFile);
+    new Response(formData).text().then(console.log);
     for (var value of formData.values()) {
       console.log(value);
     }
     await axios
-      .post("/api/join", formData, { headers: headers })
+      .post("/api/join", formData, { headers })
       .then((res) => console.log(res))
       .catch((err) => console.warn(err));
   };
