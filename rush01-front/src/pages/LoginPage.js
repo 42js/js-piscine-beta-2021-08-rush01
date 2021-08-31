@@ -1,17 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import axios from "axios";
 
 function LoginPage({ history }) {
-  const onLoginHandler = async (e) => {
+  const onLoginHandler = (e) => {
     e.preventDefault(); // for no refresh
-    await axios
-      .get("/api/login")
-      .then((res) => {
-        console.log(res);
-        history.push("/join");
-      })
-      .catch((err) => console.warn(err));
+    try {
+      history.push("/api/login");
+    } catch (e) {
+      console.log(e);
+    }
   };
   return (
     <LoginPageStyled>
