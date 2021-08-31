@@ -1,0 +1,13 @@
+.box{
+    width: 100%;
+    height: 20%;
+}
+.img{
+    align-content: center;
+    margin-left: 40%;
+    margin-right: 40%;
+}
+.nick{
+    width: 100%;
+    margin-top: 5%;
+}
