@@ -9,7 +9,6 @@ router.use(passport.session());
 const storage = multer.diskStorage({
     destination: "./public/img/",
     filename: function(req, file, cb) {
-      console.log(file)
       cb(null, "imgfile" + Date.now());
     }
   });
