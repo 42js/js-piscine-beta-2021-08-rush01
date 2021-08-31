@@ -29,4 +29,5 @@ jobs:
         shell: bash
         run: |
             git pull
+            sudo bash up.sh
 
