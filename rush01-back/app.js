@@ -12,6 +12,7 @@ var passport = require('./passportset');
 const {sequelize, Users} = require('./models/');
 
 const loginRouter = require('./routes/login');
+const joinRouter = require('./routes/join');
 
 var app = express();
 //sequelize.authenticate().then((results) => {
@@ -43,6 +44,7 @@ app.get('/api', (req, res) => {
 	res.json('hello');
 });
 app.use('/api/login', loginRouter);
+app.use('/api/join', joinRouter);
 /*
 app.get('/login',
   ensureLoggedIn('/login/42'),
