@@ -28,6 +28,6 @@ jobs:
       - name: Run a multi-line script
         shell: bash
         run: |
-            sudo git pull
+            git pull
             bash up.sh
 
