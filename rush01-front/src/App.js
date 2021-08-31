@@ -2,7 +2,8 @@ import styled, { createGlobalStyle } from "styled-components";
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import LoginPage from "../src/pages/LoginPage";
-import JoinPage from "../src/pages/JoinPage";
+import JoinPage from "../src/pages/JoinPage/JoinPage";
+import axios from "axios";
 import MainPage from "../src/pages/MainPage";
 
 const GlobalStyle = createGlobalStyle`
@@ -26,7 +27,12 @@ const GlobalStyle = createGlobalStyle`
     background: -webkit-linear-gradient(to left, #24243e, #302b63, #0f0c29);
     background: linear-gradient(to left, #24243e, #302b63, #0f0c29);
     */
+<<<<<<< HEAD
 
+=======
+   
+    /*
+>>>>>>> 773319b11bce875fe0458b7fb29fafb1fec8cc1c
     background: #0F2027;
     background: -webkit-linear-gradient(to bottom, #2C5364, #203A43, #0F2027);
     background: linear-gradient(to bottom, #2C5364, #203A43, #0F2027);
@@ -64,6 +70,16 @@ const Header = styled.header`
 `;
 
 function App() {
+  const handleJoinButtonClick = async (nickname, imgFile) => {
+    await axios
+      .post("/api/join", {
+        nickname: nickname,
+        photo: imgFile,
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.warn(err));
+  };
+
   return (
     <div className="App">
       <Header>
@@ -72,7 +88,12 @@ function App() {
       <BrowserRouter>
         <Route path="/" render={() => <MainPage nickname={"hannkim"} />} />
         <Route path="/login" component={LoginPage} />
-        <Route path="/join" component={JoinPage} />
+        <Route
+          path="/join"
+          render={() => (
+            <JoinPage handleJoinButtonClick={handleJoinButtonClick} />
+          )}
+        />
       </BrowserRouter>
       <GlobalStyle />
     </div>
