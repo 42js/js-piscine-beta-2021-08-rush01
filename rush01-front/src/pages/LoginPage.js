@@ -1,13 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-function LoginPage({ history }) {
+function LoginPage() {
   const handleClick = () => {
-    try {
-      history.push("/api/login");
-    } catch (e) {
-      console.warn(e);
-    }
+    window.location.replace("http://3.34.253.253/api/login");
   };
   return (
     <LoginPageStyled>
