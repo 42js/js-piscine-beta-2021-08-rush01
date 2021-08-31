@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const GamePageStyled = styled.div`
+  display: flex;
+  flex-direction: column;
   button {
     width: 180px;
     text-align: center;
@@ -21,7 +23,7 @@ export const PlayerCards = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin: 0 30px;
+  margin: 0 100px;
 `;
 
 PlayerCards.Box = styled.div`
@@ -31,8 +33,8 @@ PlayerCards.Box = styled.div`
 `;
 
 PlayerCards.Card = styled.div`
-  min-width: 200px;
-  min-height: 300px;
+  width: 100px;
+  height: 100px;
   justify-content: center;
   align-items: center;
   background: #eee;
