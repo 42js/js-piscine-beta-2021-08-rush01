@@ -8,7 +8,8 @@ import MainPage from "../src/pages/MainPage";
 import GamePage from "../src/pages/GamePage/GamePage";
 
 function App() {
-  const handleJoinButtonClick = async (nickname, imgFile) => {
+  const handleJoinButtonClick = async (nickname) => {
+    /*
     const headers = {
       processData: false,
       "Content-Type": "multipart/form-data",
@@ -20,8 +21,12 @@ function App() {
     for (var value of formData.values()) {
       console.log(value);
     }
+    */
+    console.log(nickname);
     await axios
-      .post("/api/join", formData, { headers })
+      .post("/api/join", {
+        nickname: nickname,
+      })
       .then((res) => console.log(res))
       .catch((err) => console.warn(err));
   };
