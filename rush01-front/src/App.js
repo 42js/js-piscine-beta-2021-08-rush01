@@ -12,7 +12,7 @@ function App() {
   const cookies = new Cookies();
   const [nickname, setNickname] = useState();
   const [imgPreview, setImgPreview] = useState();
-  const handleJoinButtonClick = async (nickname, imgPreview) => {
+  const handleJoinButtonClick = (nickname, imgPreview) => {
     /*
     const headers = {
       processData: false,
@@ -28,7 +28,7 @@ function App() {
     */
     setNickname(nickname);
     setImgPreview(imgPreview);
-    await axios
+    axios
       .post("/api/join", {
         nickname: nickname.value,
       })
