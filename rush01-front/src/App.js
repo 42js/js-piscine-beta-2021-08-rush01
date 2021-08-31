@@ -5,6 +5,7 @@ import LoginPage from "../src/pages/LoginPage";
 import JoinPage from "../src/pages/JoinPage/JoinPage";
 import axios from "axios";
 import MainPage from "../src/pages/MainPage";
+import GamePage from "../src/pages/GamePage/GamePage";
 
 const GlobalStyle = createGlobalStyle`
   html, body, ul, li, input, button, a {
@@ -108,6 +109,7 @@ function App() {
             <JoinPage handleJoinButtonClick={handleJoinButtonClick} />
           )}
         />
+        <Route path="/game" component={GamePage} />
       </BrowserRouter>
       <GlobalStyle />
     </div>
