@@ -4,8 +4,7 @@ const development = {
     "password": process.env.PW,
     "database": process.env.DB,
     "host": process.env.DBHOST,
-    "port": process.env.PORT,
-    "dialect": process.env.DIALECT,
+    "dialect": process.env.DIALECT
   }
 
 const test = {

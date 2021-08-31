@@ -16,11 +16,11 @@ router.get('/',
             username: req.user.username,
             email: req.user.email
           })
-        }
+          res.redirect('/join');
+        } else
+          res.redirect('/')
     }).catch((err) => { console.log('' + err); });
-    
     console.log(req.user.username,'loggedin');
-    res.redirect('/login')
     //res.render('index', {name : req.user.username});
   });
 
