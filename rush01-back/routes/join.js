@@ -6,6 +6,14 @@ var passport = require('../passportset');
 
 router.use(passport.initialize());
 router.use(passport.session());
+router.get('/',
+  ensureLoggedIn('/api/login/42'),
+  function (req, res) {
+    Users.findAll({ where: { username: req.user.username }}).then((results) => {
+          res.json(results)
+    }).catch((err) => { console.log('' + err); });
+    //res.render('index', {name : req.user.username});
+  });
 router.post('/',
   ensureLoggedIn('/api/login/42'),
   function (req, res) {
