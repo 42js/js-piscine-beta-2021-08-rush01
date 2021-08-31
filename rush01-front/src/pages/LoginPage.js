@@ -1,7 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-function LoginPage({ handleClick }) {
+function LoginPage() {
+  const handleClick = () => {
+    window.location.replace("http://3.34.253.253/api/login");
+  };
   return (
     <LoginPageStyled>
       <LoginForm>
