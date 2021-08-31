@@ -16,7 +16,7 @@ function MainPage(props) {
       <MainPageStyled>
         <Profile>
           {/* src = {props.photo} */}
-          <img src={defaultImg} alt="profile" />
+          <img src={props.img ? props.img : defaultImg} alt="profile" />
           환영합니다 {props.nickname}님
         </Profile>
         <button
@@ -75,11 +75,14 @@ export const Profile = styled.div`
     width: 100px;
     height: 100px;
     border-radius: 50%;
+    margin-right: 22px;
   }
   display: flex;
   flex-align: center;
   justify-content: center;
   align-items: center;
+  margin-top: 30px;
+  margin-bottom: 35px;
 `;
 
 export default MainPage;

@@ -8,7 +8,7 @@ function JoinPage({ handleJoinButtonClick }) {
   const profile = useImage();
 
   const handleClick = () => {
-    handleJoinButtonClick(nickname.value, profile.imgFile);
+    handleJoinButtonClick(nickname.value, profile.imgPreview);
   };
 
   return (
