@@ -21,19 +21,15 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body { 
-    background: #000;
-  
-    /*
+   /*
     background: #0f0c29;
     background: -webkit-linear-gradient(to left, #24243e, #302b63, #0f0c29);
     background: linear-gradient(to left, #24243e, #302b63, #0f0c29);
     */
 
-    /*
     background: #0F2027;
     background: -webkit-linear-gradient(to bottom, #2C5364, #203A43, #0F2027);
     background: linear-gradient(to bottom, #2C5364, #203A43, #0F2027);
-    */
   }
   
   header {
@@ -74,10 +70,9 @@ function App() {
         <h1>Indian Poker</h1>
       </Header>
       <BrowserRouter>
-        <Route path="/" exact component={LoginPage} />
+        <Route path="/" exact component={MainPage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/join" component={JoinPage} />
-        <Route path="/main" component={MainPage} />
       </BrowserRouter>
       <GlobalStyle />
     </div>

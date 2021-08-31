@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import defaultImg from "../assets/img-default.svg";
 
@@ -22,10 +22,7 @@ const MainPageStyled = styled.div`
   }
 `;
 
-const UserProfile = styled.div``;
-
 const Profile = styled.div`
-  display: flex;
   img {
     top: 60px;
     left: 5px;
@@ -33,23 +30,20 @@ const Profile = styled.div`
     height: 100px;
     border-radius: 50%;
   }
-`;
-
-const Nickname = styled.div`
   display: flex;
+  flex-align: center;
+  justify-content: center;
+  align-items: center;
 `;
 
-function MainPage() {
-  const [imgPreview, setImgPreview] = useState(defaultImg);
-
+function MainPage(props) {
   return (
     <MainPageStyled>
-      <UserProfile>
-        <Profile>
-          <img src={imgPreview} alt="profile" />
-          <Nickname> 환영합니다 </Nickname>
-        </Profile>
-      </UserProfile>
+      <Profile>
+        {/* src = {props.photo} */}
+        <img src={defaultImg} alt="profile" />
+        환영합니다 nickname{props.nickname}님
+      </Profile>
       <button type="button">방 참가</button>
       <button type="button">방 생성</button>
     </MainPageStyled>
