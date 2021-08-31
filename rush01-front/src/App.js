@@ -6,7 +6,53 @@ import JoinPage from "../src/pages/JoinPage/JoinPage";
 import axios from "axios";
 import MainPage from "../src/pages/MainPage";
 
-const GlobalStyle = createGlobalStyle`
+function App() {
+  const handleLoginButtonClick = async () => {
+    await axios
+      .get("/api/login")
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  };
+  const handleJoinButtonClick = async (nickname, imgFile) => {
+    await axios
+      .post("/api/join", {
+        nickname: nickname,
+        photo: imgFile,
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.warn(err));
+  };
+
+  return (
+    <div className="App">
+      <Header>
+        <h1>Indian Poker</h1>
+      </Header>
+      <BrowserRouter>
+        <Route
+          path="/"
+          exact
+          render={() => <MainPage nickname={"hannkim"} />}
+        />
+        <Route
+          path="/login"
+          render={() => <LoginPage handleClick={handleLoginButtonClick} />}
+        />
+        <Route
+          path="/join"
+          render={() => (
+            <JoinPage handleJoinButtonClick={handleJoinButtonClick} />
+          )}
+        />
+      </BrowserRouter>
+      <GlobalStyle />
+    </div>
+  );
+}
+
+export const GlobalStyle = createGlobalStyle`
   html, body, ul, li, input, button, a {
     all: unset;
     list-style: none;
@@ -63,55 +109,9 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const Header = styled.header`
+export const Header = styled.header`
   text-align: center;
   margin-top: 60px;
 `;
-
-function App() {
-  const handleLoginButtonClick = async () => {
-    await axios
-      .get("/api/login")
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => console.log(err));
-  };
-  const handleJoinButtonClick = async (nickname, imgFile) => {
-    await axios
-      .post("/api/join", {
-        nickname: nickname,
-        photo: imgFile,
-      })
-      .then((res) => console.log(res))
-      .catch((err) => console.warn(err));
-  };
-
-  return (
-    <div className="App">
-      <Header>
-        <h1>Indian Poker</h1>
-      </Header>
-      <BrowserRouter>
-        <Route
-          path="/"
-          exact
-          render={() => <MainPage nickname={"hannkim"} />}
-        />
-        <Route
-          path="/login"
-          render={() => <LoginPage handleClick={handleLoginButtonClick} />}
-        />
-        <Route
-          path="/join"
-          render={() => (
-            <JoinPage handleJoinButtonClick={handleJoinButtonClick} />
-          )}
-        />
-      </BrowserRouter>
-      <GlobalStyle />
-    </div>
-  );
-}
 
 export default App;
