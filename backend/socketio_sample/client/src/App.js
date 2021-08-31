@@ -25,22 +25,22 @@ function App() {
     // //   setMyPlayer((me.name = 'aaa'), (me.type = 'playerOne'));
     // //   setOpponetPlayer((opponent.name = 'bbb'), (opponent.type = 'playerTwo'));
     // // }
-    // socket.on('updateGameToClient', (value) => {
-    //   setGameStatus(() => {
-    //     currentGame.potOnTable = value.potOnTable;
-    //   });
-    // });
+    socket.on('updateGameToClient', (value) => {
+      setGameStatus(() => {
+        currentGame.potOnTable = value.potOnTable;
+      });
+    });
     console.log(currentGame.currentTurn);
     return currentGame;
   };
 
-  useEffect(() => {
-    socket.on('updateGameToClient', (value) => {
-      setGameStatus(() => {
-        currentGame.potOnTable = Number(value.potOnTable);
-      });
-    });
-  }, [socket]);
+  // useEffect(() => {
+  //   socket.on('updateGameToClient', (value) => {
+  //     setGameStatus(() => {
+  //       currentGame.potOnTable = Number(value.potOnTable);
+  //     });
+  //   });
+  // }, [socket]);
 
   const handleBetChange = ({ target: { value } }) => {
     setInput(+value);
@@ -78,7 +78,7 @@ function App() {
 
   return (
     <>
-      <div id="gameInfo">
+      <div id="gameInfo" onChange={handleGameChange}>
         {/* current turn name: {currentGame.currentTurn.name} */}
         <br />
         pot: {currentGame.potOnTable}
