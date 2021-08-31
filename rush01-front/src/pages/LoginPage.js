@@ -1,19 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-function LoginPage({ history }) {
-  const onLoginHandler = (e) => {
-    e.preventDefault(); // for no refresh
-    try {
-      history.push("/api/login");
-    } catch (e) {
-      console.log(e);
-    }
-  };
+function LoginPage({ handleClick }) {
   return (
     <LoginPageStyled>
       <LoginForm>
-        <button type="button" onClick={onLoginHandler}>
+        <button type="button" onClick={handleClick}>
           Intra Login
         </button>
       </LoginForm>
