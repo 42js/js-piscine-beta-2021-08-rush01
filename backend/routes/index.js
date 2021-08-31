@@ -14,13 +14,13 @@ router.get("/", authCheck, function (req, res, next) {
 router.get(
     "/google/callback",
     passport.authenticate("google", {
-        successRedirect: "http://localhost:3000/",
+        successRedirect: "http://localhost:3000/game",
         failureRedirect: "login/faild",
     })
 );
 
 router.get("/login/success", authCheck, function (req, res, next) {
-    res.send("thx");
+    res.json({ msg: "hi" });
 });
 
 router.get("/login/faild", function (req, res, err) {

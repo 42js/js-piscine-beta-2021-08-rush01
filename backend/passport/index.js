@@ -5,11 +5,14 @@ const env = process.env;
 //const {Users} = require("../models")
 passport.serializeUser(function (user, done) {
     //login 처음 성공
-    done(null, user); //세션에 저장됨.
+    console.log("Serialize User", user);
+    return done(null, user); //세션에 저장됨.
 });
 passport.deserializeUser(function (user, done) {
+    //세션에서 유저를 가져온다.
     //user dbd에서 아이디로 가져온다.
-    done(null, user);
+    console.log("DeSerialize User", user);
+    return done(null, user);
 });
 
 googleOpt = {
@@ -20,11 +23,14 @@ googleOpt = {
 };
 
 googleVerify = (req, accessToken, refreshToken, profile, done) => {
-    console.log("profile", profile);
-
     //Users.findOrCreate({ where : {profile.id}});
-    const user = profile;
-    done(null, user); // serializeUser로 이동
+    const user = {
+        username: profile.displayName,
+        userphoto: profile.photos[0].value,
+        usesrid: profile.id,
+    };
+    console.log(user);
+    return done(null, user); // serializeUser로 이동
 };
 
 module.exports = () => {
