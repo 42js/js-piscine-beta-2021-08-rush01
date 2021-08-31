@@ -70,6 +70,7 @@ function App() {
       </Header>
       <BrowserRouter>
         <Route path="/" exact component={LoginPage} />
+        <Route path="/login" component={LoginPage} />
         <Route path="/join" component={JoinPage} />
       </BrowserRouter>
       <GlobalStyle />
