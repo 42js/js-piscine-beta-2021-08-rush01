@@ -2,7 +2,8 @@ import styled, { createGlobalStyle } from "styled-components";
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import LoginPage from "../src/pages/LoginPage";
-import JoinPage from "../src/pages/JoinPage";
+import JoinPage from "../src/pages/JoinPage/JoinPage";
+import axios from "axios";
 
 const GlobalStyle = createGlobalStyle`
   html, body, ul, li, input, button, a {
@@ -67,6 +68,16 @@ const Header = styled.header`
 `;
 
 function App() {
+  const handleJoinButtonClick = async (nickname, imgFile) => {
+    await axios
+      .post("/api/join", {
+        nickname: nickname,
+        photo: imgFile,
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.warn(err));
+  };
+
   return (
     <div className="App">
       <Header>
@@ -75,7 +86,12 @@ function App() {
       <BrowserRouter>
         <Route path="/" exact component={LoginPage} />
         <Route path="/login" component={LoginPage} />
-        <Route path="/join" component={JoinPage} />
+        <Route
+          path="/join"
+          render={() => (
+            <JoinPage handleJoinButtonClick={handleJoinButtonClick} />
+          )}
+        />
       </BrowserRouter>
       <GlobalStyle />
     </div>
