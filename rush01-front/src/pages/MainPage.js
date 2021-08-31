@@ -37,15 +37,29 @@ const Profile = styled.div`
 `;
 
 function MainPage(props) {
+  const onJoinRoomHandler = (e) => {
+    e.preventDefault(); // for no refresh
+    alert("Join Room Button");
+  };
+
+  const onCreateRoomHandler = (e) => {
+    e.preventDefault(); // for no refresh
+    alert("Create Room Button");
+  };
+
   return (
     <MainPageStyled>
       <Profile>
         {/* src = {props.photo} */}
         <img src={defaultImg} alt="profile" />
-        환영합니다 nickname{props.nickname}님
+        환영합니다 {props.nickname}님
       </Profile>
-      <button type="button">방 참가</button>
-      <button type="button">방 생성</button>
+      <button type="button" onClick={onJoinRoomHandler}>
+        방 참가
+      </button>
+      <button type="button" onClick={onCreateRoomHandler}>
+        방 생성
+      </button>
     </MainPageStyled>
   );
 }

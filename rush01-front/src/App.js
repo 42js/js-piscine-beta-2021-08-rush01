@@ -70,7 +70,7 @@ function App() {
         <h1>Indian Poker</h1>
       </Header>
       <BrowserRouter>
-        <Route path="/" exact component={MainPage} />
+        <Route path="/" render={() => <MainPage nickname={"hannkim"} />} />
         <Route path="/login" component={LoginPage} />
         <Route path="/join" component={JoinPage} />
       </BrowserRouter>
