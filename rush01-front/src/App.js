@@ -8,14 +8,6 @@ import MainPage from "../src/pages/MainPage";
 import GamePage from "../src/pages/GamePage/GamePage";
 
 function App() {
-  const handleLoginButtonClick = async () => {
-    await axios
-      .get("/api/login")
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => console.log(err));
-  };
   const handleJoinButtonClick = async (nickname, imgFile) => {
     const headers = {
       processData: false,
@@ -45,10 +37,7 @@ function App() {
           exact
           render={() => <MainPage nickname={"hannkim"} />}
         />
-        <Route
-          path="/login"
-          render={() => <LoginPage handleClick={handleLoginButtonClick} />}
-        />
+        <Route path="/login" render={() => <LoginPage />} />
         <Route
           path="/join"
           render={() => (
