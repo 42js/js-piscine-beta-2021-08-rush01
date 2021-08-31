@@ -1,38 +1,32 @@
 import styled from "styled-components";
 
 export const NewRoomFormStyled = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-width: 70%;
-height: 80%;
-font-family: 'DOSGothic';
-.description {
-    text-align: center;
-    color: #555;
-}
-h2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  height: 80%;
+  font-family: 'DOSGothic';
+  .description {
+      text-align: center;
+      color: #555;
+  }
+  h2 {
     margin: 0 0 25px 0;
     text-align: center;
   }
-
   button {
     width: 150px;
     padding: 15px 0;
-    margin: 35px 0 0 0;
+    margin-top: 45px;
     text-align: center;
     border: 1px solid #ddd;
     border-radius: 25px;
     letter-spacing: 0.09em;
     :hover {
-      background-color: #343a3f;
+      background-color: #653184;
       color: #fff;
-  }
-
-  .description {
-      text-align: center;
-      margin-bottom: 10px;
   }
 `;
 
@@ -49,6 +43,9 @@ export const FormItem = styled.div`
     width: 50px;
     border-bottom: 1px dotted #555;
     margin-right: 10px;
+    font-size: 18px;
+    color: #653184;
+    letter-spacing: 0.05em;
   }
 `;
 
