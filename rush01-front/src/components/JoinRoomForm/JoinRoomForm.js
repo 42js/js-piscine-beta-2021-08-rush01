@@ -1,7 +1,8 @@
 import React from "react";
+import JoinRoomFormStyled from "./JoinRoomForm.styles";
 
 function JoinRoomForm() {
-  return <div>Join Room</div>;
+  return <JoinRoomFormStyled>Join Room</JoinRoomFormStyled>;
 }
 
 export default JoinRoomForm;
