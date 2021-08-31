@@ -3,7 +3,6 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
 var logger = require('morgan');
 var session = require('express-session');
 var fileStore = require('session-file-store')(session);
@@ -15,10 +14,7 @@ const {sequelize, Users} = require('./models/');
 
 const loginRouter = require('./routes/login');
 const joinRouter = require('./routes/join');
-app.use(bodyParser.urlencoded({ extended: false }))
- 
-// parse application/json
-app.use(bodyParser.json())
+
 var app = express();
 app.use(cors({
   origin: true,
@@ -30,7 +26,8 @@ sequelize.sync().then((results) => {
 }).catch((err) => {
   console.log(err);
 });
-
+app.use(express.json()); 
+app.use(express.urlencoded( {extended : false } ));
 // view engine setup
 // console.log(Users);
 // Users.findOne({ where: { username: "gilee" } }).then((results) => {
