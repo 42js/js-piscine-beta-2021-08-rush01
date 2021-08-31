@@ -22,13 +22,6 @@ function App() {
       console.log(value);
     }
     */
-    console.log(nickname);
-    await axios
-      .post("/api/join", {
-        nickname: nickname,
-      })
-      .then((res) => console.log(res))
-      .catch((err) => console.warn(err));
   };
 
   return (

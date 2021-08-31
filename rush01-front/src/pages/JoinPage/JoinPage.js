@@ -2,13 +2,22 @@ import React from "react";
 import { JoinPageStyled, JoinForm } from "./JoinPage.styles";
 import useInput from "../../hooks/useInput";
 import useImage from "../../hooks/useImage";
+import axios from "axios";
 
-function JoinPage({ handleJoinButtonClick }) {
+function JoinPage({ history }) {
   const nickname = useInput("");
   const profile = useImage();
 
-  const handleClick = () => {
-    handleJoinButtonClick(nickname.value);
+  const handleClick = async () => {
+    await axios
+      .post("/api/join", {
+        nickname: nickname,
+      })
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) history.push("/");
+      })
+      .catch((err) => console.warn(err));
   };
 
   return (
