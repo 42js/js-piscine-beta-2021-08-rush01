@@ -23,20 +23,29 @@ const io = new Server(server, {
 });
 
 let interval;
-
-const getApiAndEmit = (socket) => {
-  const response = new Date();
-  // Emitting a new message. Will be consumed by the client
-  socket.emit('FromAPI', response);
-};
+let rooms = 0;
+// const getApiAndEmit = (socket) => {
+//   const response = new Date();
+//   // Emitting a new message. Will be consumed by the client
+//   socket.emit('FromAPI', response);
+// };
 
 io.on('connection', (socket) => {
   console.log('New client connected');
-  if (interval) {
-    clearInterval(interval);
-  }
-  interval = setInterval(() => getApiAndEmit(socket), 1000);
+  rooms += 1;
+  socket.broadcast.emit('listAllRoom', { room: rooms });
+  socket.on('updateGame', (value) => {
+    console.log(value);
+    socket.emit('updateGameToClient', value);
+  });
+
+  socket.on('createRoom', (data) => {
+    socket.join(`room-${rooms}`);
+    rooms += 1;
+    socket.emit('newGame', { name: data.name, room: `room-${rooms}` });
+  });
   socket.on('disconnect', () => {
+    rooms -= 1;
     console.log('Client disconnected');
     clearInterval(interval);
   });
