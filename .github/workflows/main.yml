@@ -16,9 +16,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-  bu3:
+      - run: |
+          git pull
+  build2:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - run: |
-            git pull
+          cd rush01-front
+          yarn
+          cd ..
+          cd rush01-back
+          npm i
+          cd ..
