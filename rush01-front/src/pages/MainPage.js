@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import defaultImg from "../assets/img-default.svg";
 import { OverlayProvider, OverlayContainer } from "@react-aria/overlays";
@@ -6,19 +6,11 @@ import useToggleDialog from "../hooks/useToggleDialog";
 import Dialog from "../components/Dialog/Dialog";
 import DialogCloseButton from "../components/Dialog/DialogCloseButton";
 import NewRoomForm from "../components/NewRoomForm/NewRoomForm";
+import JoinRoomForm from "../components/JoinRoomForm/JoinRoomForm";
 
 function MainPage(props) {
+  const [type, setType] = useState("");
   const { state, openButtonProps, openButtonRef } = useToggleDialog();
-  const onJoinRoomHandler = (e) => {
-    e.preventDefault(); // for no refresh
-    alert("Join Room Button");
-  };
-
-  const onCreateRoomHandler = (e) => {
-    e.preventDefault(); // for no refresh
-    alert("Create Room Button");
-  };
-
   return (
     <OverlayProvider>
       <MainPageStyled>
@@ -31,7 +23,7 @@ function MainPage(props) {
           type="button"
           {...openButtonProps}
           ref={openButtonRef}
-          onClick={onJoinRoomHandler}
+          onClick={() => setType("join")}
         >
           방 참가
         </button>
@@ -39,7 +31,7 @@ function MainPage(props) {
           type="button"
           {...openButtonProps}
           ref={openButtonRef}
-          onClick={onCreateRoomHandler}
+          onClick={() => setType("create")}
         >
           방 생성
         </button>
@@ -48,7 +40,7 @@ function MainPage(props) {
         <OverlayContainer>
           <Dialog isOpen onClose={state.close} isDimissible>
             <DialogCloseButton onCloseButton={state.close} />
-            <NewRoomForm />
+            {type === "join" ? <JoinRoomForm /> : <NewRoomForm />}
           </Dialog>
         </OverlayContainer>
       )}

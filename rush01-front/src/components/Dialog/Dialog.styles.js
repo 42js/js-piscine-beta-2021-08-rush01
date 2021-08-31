@@ -16,16 +16,15 @@ export const DialogStyled = styled.div`
 
 DialogStyled.Box = styled.div`
   width: 40%;
-  height: 50%;
-  min-width: 500px;
-  min-height: 600px;
+  height: 40%;
+  min-width: 450px;
+  min-height: 400px;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #fff;
-  border-radius: 2rem;
-  padding: 7rem 8rem;
+  background: #eee;
+  border-radius: 20px;
   box-sizing: border-box;
 `;
