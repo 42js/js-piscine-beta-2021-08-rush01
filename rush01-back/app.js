@@ -7,6 +7,7 @@ var logger = require('morgan');
 var session = require('express-session');
 var fileStore = require('session-file-store')(session);
 var passport = require('./passportset');
+const cors = require('cors');
 //var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn;
 
 const {sequelize, Users} = require('./models/');
@@ -15,6 +16,7 @@ const loginRouter = require('./routes/login');
 const joinRouter = require('./routes/join');
 
 var app = express();
+app.use(cors());
 //sequelize.authenticate().then((results) => {
 sequelize.sync().then((results) => {
   console.log("done");
