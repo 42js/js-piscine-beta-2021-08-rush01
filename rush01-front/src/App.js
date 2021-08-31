@@ -1,14 +1,19 @@
 import styled, { createGlobalStyle } from "styled-components";
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import { BrowserRouter, Route } from "react-router-dom";
 import LoginPage from "../src/pages/LoginPage";
 import JoinPage from "../src/pages/JoinPage/JoinPage";
-import axios from "axios";
 import MainPage from "../src/pages/MainPage";
 import GamePage from "../src/pages/GamePage/GamePage";
 
-function App() {
-  const handleJoinButtonClick = async (nickname) => {
+function App({ history }) {
+  const [nickname, setNickname] = useState("");
+  const [imgPreview, setImgPreview] = useState("");
+  const handleJoinButtonClick = async (nickname, imgPreview) => {
+    console.log(nickname, imgPreview);
+    setNickname(nickname);
+    setImgPreview(imgPreview);
     /*
     const headers = {
       processData: false,
@@ -22,6 +27,17 @@ function App() {
       console.log(value);
     }
     */
+    await axios
+      .post("/api/join", {
+        nickname: nickname.value,
+      })
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          window.location.replace("http://3.34.253.253/");
+        }
+      })
+      .catch((err) => console.warn(err));
   };
 
   return (
@@ -30,11 +46,13 @@ function App() {
         <h1>Indian Poker</h1>
       </Header>
       <BrowserRouter>
-        <Route
-          path="/"
-          exact
-          render={() => <MainPage nickname={"hannkim"} />}
-        />
+        <Route path="/" exact>
+          {document.cookie ? (
+            <MainPage nickname={nickname} img={imgPreview} />
+          ) : (
+            <LoginPage />
+          )}
+        </Route>
         <Route path="/login" render={() => <LoginPage />} />
         <Route
           path="/join"
