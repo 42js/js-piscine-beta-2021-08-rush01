@@ -1,6 +1,6 @@
 const authCheck = (req, res, next) => {
     console.log(req.user);
-    if (req.isAuthenticated()) {
+    if (req.user) {
         next();
     } else {
         res.status(401).json({

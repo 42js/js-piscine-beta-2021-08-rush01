@@ -9,16 +9,14 @@ const passport = require("passport");
 const passportConfig = require("./passport");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
-
+const cookieSession = require("cookie-session");
 var app = express();
 const cors = require("cors");
 
 app.use(
-    session({
-        secret: process.env.COOKIE_KEY,
-        cookie: { maxAge: 60 * 60 * 1000 },
-        resave: true,
-        saveUninitialized: false,
+    cookieSession({
+        maxAge: 60 * 60 * 1000,
+        keys: [process.env.COOKIE_KEY],
     })
 );
 

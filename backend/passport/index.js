@@ -9,7 +9,6 @@ passport.serializeUser(function (user, done) {
 });
 passport.deserializeUser(function (user, done) {
     //user dbd에서 아이디로 가져온다.
-    user = { msg: "user" };
     done(null, user);
 });
 
@@ -21,7 +20,6 @@ googleOpt = {
 };
 
 googleVerify = (req, accessToken, refreshToken, profile, done) => {
-    console.log("accessToken", accessToken);
     console.log("profile", profile);
 
     //Users.findOrCreate({ where : {profile.id}});

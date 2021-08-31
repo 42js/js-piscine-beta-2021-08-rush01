@@ -8,28 +8,23 @@ router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
 
 router.get("/", authCheck, function (req, res, next) {
     console.log("user", req.user);
-    res.json({ test: "test" });
+    res.json({ test: req.user });
 });
 
 router.get(
     "/google/callback",
-    passport.authenticate("google"),
-    function sucsess(req, res, next) {
-        console.log("req.user", req.user);
-        res.status(200).json({ msg: "hi" });
-    }
+    passport.authenticate("google", {
+        successRedirect: "http://localhost:3000/",
+        failureRedirect: "login/faild",
+    })
 );
 
-router.get(
-    "/login/success",
-    passport.authenticate("google", { scope: ["profile"] }),
-    function sucsess(req, res, next) {
-        console.log("req.user", req.user);
-        res.status(200).json({ msg: "hi" });
-    }
-);
+router.get("/login/success", authCheck, function (req, res, next) {
+    res.send("thx");
+});
 
-router.get("/login/success", passport.authenticate("google"));
-router.get("/login/failed");
+router.get("/login/faild", function (req, res, err) {
+    res.json({ msg: "TT" });
+});
 router.get("/login/logout");
 module.exports = router;
