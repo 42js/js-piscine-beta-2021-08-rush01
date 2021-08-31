@@ -4,7 +4,7 @@ import styled from "styled-components";
 function LoginPage({ history }) {
   const handleClick = () => {
     try {
-      history.push("/api/join");
+      history.push("/api/login");
     } catch (e) {
       console.warn(e);
     }
