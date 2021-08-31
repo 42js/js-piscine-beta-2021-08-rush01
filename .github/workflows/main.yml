@@ -18,6 +18,12 @@ jobs:
       - uses: actions/checkout@v2
       - run: |
           git pull
+  build2:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
           cd rush01-front
           yarn
           cd ..
