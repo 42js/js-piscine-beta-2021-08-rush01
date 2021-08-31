@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from "axios";
 import './Game.css';
 import LoginError from './LoginError';
 import GameContent from './GameContent';
@@ -7,12 +8,16 @@ import Channel from './Channel';
 import Menu from './Menu';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
-function Game({token}){
-    console.log(token);
-    if (token === 'undefined'){ //undefined
-        return (<LoginError />);
-    }
-    else{
+function Game(){
+  function Game() {
+    const fetchUser = async (e) => {
+        const a = await axios.get("http://localhost:4242/login/success", {
+            withCredentials: true,
+        });
+        if (a) console.log(a);
+    };
+
+    fetchUser();
         return (
             <BrowserRouter>
                 <div className='main' align='left'>

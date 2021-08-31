@@ -1,9 +1,9 @@
-import React from 'react';
-import Login from './components/Login';
-import Game from './components/Game';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import React from "react";
+import Login from "./components/Login";
+import Game from "./components/Game";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-function App(){
+function App() {
     return (
         <BrowserRouter>
             <Switch>
