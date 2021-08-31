@@ -21,4 +21,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-            up.sh
+          cd rush01-front
+          yarn
+          cd ..
+          cd rush01-back
+          npm i
+          cd ..
