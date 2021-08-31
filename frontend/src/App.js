@@ -7,15 +7,9 @@ function App() {
     return (
         <BrowserRouter>
             <Switch>
-                <Route exact path="/">
-                    <Login />
-                </Route>
-                <Route path="/game">
-                    <Game />
-                </Route>
-                <Route>
-                    <Login />
-                </Route>
+              <Route exact path='/'><Login /></Route>
+              <Route path='/game'><Game /></Route>
+              <Route><Login /></Route>
             </Switch>
         </BrowserRouter>
     );
