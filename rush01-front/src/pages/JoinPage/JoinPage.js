@@ -15,7 +15,13 @@ function JoinPage({ history }) {
       })
       .then((res) => {
         console.log(res);
-        if (res.status === 200) history.push("/");
+        console.log(res.status);
+        if (res.status === "200") {
+          history.push("/");
+        }
+        if (res.status === 200) {
+          window.location.replace("http://3.34.253.253/");
+        }
       })
       .catch((err) => console.warn(err));
   };
