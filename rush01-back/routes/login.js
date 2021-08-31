@@ -31,7 +31,7 @@ router.get('/42',
 router.get('/42/return',
   passport.authenticate('42', { failureRedirect: '/api/login/42' }),
   function (req, res) {
-    res.redirect('/api/login')
+    res.redirect('/')
   });
   
 /*  
