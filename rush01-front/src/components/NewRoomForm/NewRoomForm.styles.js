@@ -25,7 +25,7 @@ export const NewRoomFormStyled = styled.div`
     border-radius: 25px;
     letter-spacing: 0.09em;
     :hover {
-      background-color: #653184;
+      background-color: #222;
       color: #fff;
   }
 `;
