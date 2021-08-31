@@ -1,8 +1,62 @@
 import React from "react";
 import styled from "styled-components";
 import defaultImg from "../assets/img-default.svg";
+import { OverlayProvider, OverlayContainer } from "@react-aria/overlays";
+import useToggleDialog from "../hooks/useToggleDialog";
+import Dialog from "../components/Dialog/Dialog";
+import DialogCloseButton from "../components/Dialog/DialogCloseButton";
+import NewRoomForm from "../components/NewRoomForm/NewRoomForm";
 
-const MainPageStyled = styled.div`
+function MainPage(props) {
+  const { state, openButtonProps, openButtonRef } = useToggleDialog();
+  const onJoinRoomHandler = (e) => {
+    e.preventDefault(); // for no refresh
+    alert("Join Room Button");
+  };
+
+  const onCreateRoomHandler = (e) => {
+    e.preventDefault(); // for no refresh
+    alert("Create Room Button");
+  };
+
+  return (
+    <OverlayProvider>
+      <MainPageStyled>
+        <Profile>
+          {/* src = {props.photo} */}
+          <img src={defaultImg} alt="profile" />
+          환영합니다 {props.nickname}님
+        </Profile>
+        <button
+          type="button"
+          {...openButtonProps}
+          ref={openButtonRef}
+          onClick={onJoinRoomHandler}
+        >
+          방 참가
+        </button>
+        <button
+          type="button"
+          {...openButtonProps}
+          ref={openButtonRef}
+          onClick={onCreateRoomHandler}
+        >
+          방 생성
+        </button>
+      </MainPageStyled>
+      {state.isOpen && (
+        <OverlayContainer>
+          <Dialog isOpen onClose={state.close} isDimissible>
+            <DialogCloseButton onCloseButton={state.close} />
+            <NewRoomForm />
+          </Dialog>
+        </OverlayContainer>
+      )}
+    </OverlayProvider>
+  );
+}
+
+export const MainPageStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,7 +76,7 @@ const MainPageStyled = styled.div`
   }
 `;
 
-const Profile = styled.div`
+export const Profile = styled.div`
   img {
     top: 60px;
     left: 5px;
@@ -35,33 +89,5 @@ const Profile = styled.div`
   justify-content: center;
   align-items: center;
 `;
-
-function MainPage(props) {
-  const onJoinRoomHandler = (e) => {
-    e.preventDefault(); // for no refresh
-    alert("Join Room Button");
-  };
-
-  const onCreateRoomHandler = (e) => {
-    e.preventDefault(); // for no refresh
-    alert("Create Room Button");
-  };
-
-  return (
-    <MainPageStyled>
-      <Profile>
-        {/* src = {props.photo} */}
-        <img src={defaultImg} alt="profile" />
-        환영합니다 {props.nickname}님
-      </Profile>
-      <button type="button" onClick={onJoinRoomHandler}>
-        방 참가
-      </button>
-      <button type="button" onClick={onCreateRoomHandler}>
-        방 생성
-      </button>
-    </MainPageStyled>
-  );
-}
 
 export default MainPage;

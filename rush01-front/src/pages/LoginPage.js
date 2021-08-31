@@ -33,8 +33,9 @@ function LoginPage({ history }) {
   const onLoginHandler = (e) => {
     e.preventDefault(); // for no refresh
     console.log("Login Handler");
+    history.push("/api/login");
     axios
-      .get("/")
+      .get("/api/login")
       .then((response) => {
         alert("success!");
         history.push("/join");

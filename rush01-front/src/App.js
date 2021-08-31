@@ -85,7 +85,11 @@ function App() {
         <h1>Indian Poker</h1>
       </Header>
       <BrowserRouter>
-        <Route path="/" render={() => <MainPage nickname={"hannkim"} />} />
+        <Route
+          path="/"
+          exact
+          render={() => <MainPage nickname={"hannkim"} />}
+        />
         <Route path="/login" component={LoginPage} />
         <Route
           path="/join"
