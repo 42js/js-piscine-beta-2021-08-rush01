@@ -1,0 +1,18 @@
+version: "3"
+services:
+  frontend:
+    build:
+      dockerfile: Dockerfile_front
+      context: ./
+    volumes:
+      - ./rush01-front:/app
+    depends_on: 
+      - backend
+    network_mode: "host"
+  backend:
+    build:
+      dockerfile: Dockerfile
+      context: ./
+    volumes:
+      - ./rush01-back:/app
+    network_mode: "host"

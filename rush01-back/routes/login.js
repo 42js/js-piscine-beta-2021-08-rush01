@@ -8,29 +8,29 @@ var passport = require('../passportset');
 router.use(passport.initialize());
 router.use(passport.session());
 router.get('/',
-  ensureLoggedIn('/login/42'),
+  ensureLoggedIn('/api/login/42'),
   function (req, res) {
-
     Users.findOne({ where: { username: req.user.username } }).then((results) => {
         if (results === null) {
           Users.create({
             username: req.user.username,
             email: req.user.email
           })
-        }
+          res.redirect('/join');
+        } else
+          res.redirect('/')
     }).catch((err) => { console.log('' + err); });
-    
     console.log(req.user.username,'loggedin');
-    res.render('index', {name : req.user.username});
+    //res.render('index', {name : req.user.username});
   });
 
 router.get('/42',
   passport.authenticate('42'));
 
 router.get('/42/return',
-  passport.authenticate('42', { failureRedirect: '/login/42' }),
+  passport.authenticate('42', { failureRedirect: '/api/login/42' }),
   function (req, res) {
-    res.redirect('/login')
+    res.redirect('/api/login')
   });
   
 /*  
