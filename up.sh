@@ -1,5 +1,4 @@
 #!/usr/bin/bash
-git pull
 cd rush01-front
 yarn
 cd ..
