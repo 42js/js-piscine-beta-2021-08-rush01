@@ -28,7 +28,8 @@ router.post('/',
   ensureLoggedIn('/api/login/42'),//upload.single("file"),
   function (req, res) {
     try{
-      console.log(req)
+      var buf = new Buffer(req.body.photo.toString('binary'),'binary')
+      console.log(buf)
     }catch(e){
       console.log(e);
     }
