@@ -6,8 +6,10 @@ import JoinPage from "../src/pages/JoinPage/JoinPage";
 import axios from "axios";
 import MainPage from "../src/pages/MainPage";
 import GamePage from "../src/pages/GamePage/GamePage";
+import { Cookies } from "react-cookie";
 
 function App() {
+  const cookies = new Cookies();
   const handleJoinButtonClick = async (nickname, imgFile) => {
     const headers = {
       processData: false,
@@ -26,6 +28,7 @@ function App() {
       .catch((err) => console.warn(err));
   };
 
+  console.log(cookies.get("connect.sid"));
   return (
     <div className="App">
       <Header>
