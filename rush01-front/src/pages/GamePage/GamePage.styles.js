@@ -33,8 +33,8 @@ PlayerCards.Box = styled.div`
 `;
 
 PlayerCards.Card = styled.div`
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 200px;
   justify-content: center;
   align-items: center;
   background: #eee;
