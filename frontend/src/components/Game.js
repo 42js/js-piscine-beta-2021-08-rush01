@@ -12,7 +12,7 @@ function Game({token}){
     else{
         return (
             <div className='main' align='left'>
-                <h1 className='header'>Game</h1>
+                <h1 className='header'>INDIAN POKER GAME</h1>
                 <Grid className='grid'>
                     <Box component='div' className='menu'>Menu</Box>
                     <GameContent className='content' />
