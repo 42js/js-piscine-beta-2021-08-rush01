@@ -21,5 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
+            cd ~/ec2-user/rush01/
+            git pull
             sudo bash up.sh
 
