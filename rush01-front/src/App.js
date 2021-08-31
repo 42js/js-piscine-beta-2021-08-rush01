@@ -16,10 +16,12 @@ function App() {
       .catch((err) => console.log(err));
   };
   const handleJoinButtonClick = async (nickname, imgFile) => {
+    const formData = new FormData();
+    formData.append("file", imgFile);
     await axios
       .post("/api/join", {
         nickname: nickname,
-        photo: imgFile,
+        photo: formData,
       })
       .then((res) => console.log(res))
       .catch((err) => console.warn(err));
