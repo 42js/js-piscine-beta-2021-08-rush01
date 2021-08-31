@@ -9,7 +9,6 @@ router.use(passport.session());
 const storage = multer.diskStorage({
     destination: "./public/img/",
     filename: function(req, file, cb) {
-      console.log(file)
       cb(null, "imgfile" + Date.now());
     }
   });
@@ -28,7 +27,7 @@ router.get('/',
 router.post('/',
   ensureLoggedIn('/api/login/42'),upload.single("file"),
   function (req, res) {
-      console.log(req.file)
+      console.log(req.file.profile)
     Users.update({nickname:req.body.nickname,photo:req.body.photo},{ where: { username: req.user.username } }).then((results) => {
           res.redirect('/')
     }).catch((err) => { console.log('' + err); });
