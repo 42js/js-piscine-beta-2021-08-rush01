@@ -37,7 +37,7 @@ const LoginForm = ({ history }) => {
 		const email = googleData.Ws.Ht;
 		const accessToken = googleData.accessToken;
 		const tokenId = googleData.tokenId;
-		dispatch(login({ email, accessToken, tokenId }))
+		// dispatch(login({ email, accessToken, tokenId }))
 		// const res = await fetch("/api/v1/auth/google", {
 		// 	method: "POST",
 		// 	body: JSON.stringify({
