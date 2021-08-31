@@ -28,7 +28,7 @@ router.post('/',
   ensureLoggedIn('/api/login/42'),upload.single("file"),
   function (req, res) {
     try{
-      console.log(req.file.profile)
+      console.log(req)
     }catch(e){
       console.log(e);
     }
