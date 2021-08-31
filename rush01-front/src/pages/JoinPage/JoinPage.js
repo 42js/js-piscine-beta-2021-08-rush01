@@ -11,7 +11,7 @@ function JoinPage({ history }) {
   const handleClick = async () => {
     await axios
       .post("/api/join", {
-        nickname: nickname,
+        nickname: nickname.value,
       })
       .then((res) => {
         console.log(res);
