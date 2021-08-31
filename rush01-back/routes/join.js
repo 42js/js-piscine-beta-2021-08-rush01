@@ -27,8 +27,11 @@ router.get('/',
 router.post('/',
   ensureLoggedIn('/api/login/42'),upload.single("file"),
   function (req, res) {
+    try{
       console.log(req.file.profile)
-      
+    }catch(e){
+      console.log(e);
+    }
     //Users.update({nickname:req.body.nickname,photo:req.body.photo},{ where: { username: req.user.username } }).then((results) => {
     //      res.redirect('/')
     //}).catch((err) => { console.log('' + err.stack); });
